@@ -6,21 +6,12 @@ const cors = require('cors');
 const bcrypt = require('bcrypt');
 const mongodbConnect = require('./db/db.js');
 const usermodel = require('./db/model/usermodel.js');
-
-const hashedpassword = require('./utils/encryption.js');
-const auth = require('./auth/auth.js');
 const check_username = require('./auth/check_username.js');
 const create_user = require('./auth/create_user.js');
-
-
-
-
-
-
+const hashedpassword = require('./utils/encryption.js');
+const auth = require('./auth/auth.js');
 
 mongodbConnect();
-
-
 const app = express();
 app.use(cors());
 app.set('view engine' , 'ejs');
@@ -67,7 +58,7 @@ app.post('/user-login' , async (req,res)=>{
     if(result ){
         res.send("Login successful");
     }
-    res.send("teri maa ki chit ")
+    res.send("Username or Password is incorrect  ")
     
     
 
