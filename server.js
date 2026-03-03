@@ -1,7 +1,7 @@
 const express = require('express');
 const dotenv = require('dotenv');
 dotenv.config();
-
+const path = require('path');
 const cors = require('cors');
 const bcrypt = require('bcrypt');
 const mongodbConnect = require('./db/db.js');
@@ -10,13 +10,20 @@ const check_username = require('./auth/check_username.js');
 const create_user = require('./auth/create_user.js');
 const hashedpassword = require('./utils/encryption.js');
 const auth = require('./auth/auth.js');
+const app = express(); //express app
+app.use(express.static("public"));
+
 
 mongodbConnect();
-const app = express();
+
+
+//Middleware uses 
+app.use(express.static(path.join(__dirname, "public")));
 app.use(cors());
 app.set('view engine' , 'ejs');
 app.use(express.json());
 app.use(express.urlencoded({extended:true}));
+//
 
 
 app.get('/' , (req,res)=>{
@@ -29,22 +36,21 @@ app.get('/register' , (req,res)=>{
 
 })
 
-app.post('/create-user' , async (req,res)=>{
-    const {username , email , password} = req.body ;
+app.post('/create-user', async (req, res) => {
+    const { username, email, password } = req.body;
+
     const result = await check_username(username);
-    if(result){
-        const result1 = await create_user(username , email , password );
-        if(result1){
-            res.send("User create successfully")
-        }
-        res.send("Something is missing")
-        
+    if (!result) {
+        return res.send("Username already Taken")
     }
-    res.send("Username already taken")
 
+    const result1 = await create_user(username, email, password);
+    if (result1) {
+        return res.status(201).send("User created successfully")
+    }
 
-
-})
+    return res.status(400).send("Something went wrong ")
+});
 
 app.get('/login' , (req,res)=>{
     res.render('Login')

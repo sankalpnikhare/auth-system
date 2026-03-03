@@ -1,0 +1,149 @@
+body {
+    margin: 0;
+    height: 100vh;
+    min-height: 100vh;
+    background-color: rgb(203, 209, 215);
+    background-image: url("https://imgs.search.brave.com/eJlC5kYNZTgugkm7Dj66y4q1svLLS5FdQk5rs0EoYUs/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly93YWxs/cGFwZXJjYXQuY29t/L3cvZnVsbC9lL2Yv/Ni8xNDI3MzAtMzg0/MHgyMTYwLWRlc2t0/b3AtNGstb2NlYW4t/YmFja2dyb3VuZC1p/bWFnZS5qcGc4");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    overflow-x: hidden ;
+}
+
+.main-container {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.links {
+    /* display: flex; */
+    flex-wrap: wrap;
+    justify-content: center;
+
+    gap: 20px;
+}
+
+
+button {
+    width: 200px;
+    padding: 12px;
+    font-size: 16px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: 0.3s;
+
+}
+
+.link1 button {
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.link1 button:hover {
+    background-color: rgb(153, 151, 151);
+}
+
+.link2 button {
+    font-family: Arial, Helvetica, sans-serif;
+
+}
+
+.link2 button:hover {
+    background-color: rgb(153, 151, 151);
+}
+
+.card-container {
+    border: 2px solid red;
+    width: 350px ; 
+    padding:30px;
+
+}
+
+#popup {
+    position: fixed;
+    bottom: 20px;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+    width: max-content;
+    white-space: nowrap;
+    padding: 15px 25px;
+    border-radius: 6px;
+    color: white;
+    font-weight: 500;
+    display: none;
+    z-index: 9999;
+    pointer-events: none;
+    align-items: center;    /* ← add this */
+    justify-content: center; /* ← add this */
+}
+
+#popup.success {
+    background-color: #28a745;
+}
+
+#popup.error {
+    background-color: #dc3545;
+}
+
+/* @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-10px); }
+    to   { opacity: 1; transform: translateY(0); }
+} */
+
+
+.contact {
+    position: absolute;
+    top: 20px;
+    right: 30px;
+}
+
+.contact a {
+    text-decoration: none;
+    font-size: 16px;
+    font-weight: bold;
+    color: #007bff;
+    transition: 0.3s;
+
+}
+
+.contact a:hover {
+    color: #0056b3;
+}
+
+.input-group {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 20px;
+    width: 100%;
+}
+
+.icon {
+    width: 22px;
+    height: 22px;
+}
+
+.input-group input {
+    flex: 1;
+    padding: 12px;
+    border-radius: 10px;
+    border: 1px solid purple;
+    outline: none;
+    font-size: 14px;
+    box-sizing: border-box;
+    /* IMPORTANT */
+}
+
+/* Button */
+button {
+    width: 100%;
+    padding: 10px;
+    border: none;
+    border-radius: 8px;
+    background-color: gray;
+    font-weight: bold;
+    cursor: pointer;
+}
