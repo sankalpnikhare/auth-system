@@ -1,15 +1,16 @@
-body {
+body{
+    
+    background-color: whitesmoke;
+    background-image: url("https://wallpaperbat.com/img/465438-minimal-desktop-wallpaper-1920x1200.jpg");
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
     margin: 0;
-    height: 1000vh;
-    min-height: 100vh;
-    background-color: rgb(203, 209, 215);
-    background-image: url("https://imgs.search.brave.com/eJlC5kYNZTgugkm7Dj66y4q1svLLS5FdQk5rs0EoYUs/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly93YWxs/cGFwZXJjYXQuY29t/L3cvZnVsbC9lL2Yv/Ni8xNDI3MzAtMzg0/MHgyMTYwLWRlc2t0/b3AtNGstb2NlYW4t/YmFja2dyb3VuZC1p/bWFnZS5qcGc4");
-    background-size: cover;
-    background-position: center;
+    background-size: cover;        /* makes image fill entire screen */
+    background-position: center;   
     background-repeat: no-repeat;
-    overflow-x: hidden ;
 }
-
 .main-container {
     min-height: 100vh;
     display: flex;
@@ -34,6 +35,7 @@ button {
     border-radius: 8px;
     cursor: pointer;
     transition: 0.3s;
+    
 
 }
 
@@ -106,7 +108,7 @@ button {
     text-decoration: none;
     font-size: 16px;
     font-weight: bold;
-    color: #007bff;
+    color: #e7ebef;
     transition: 0.3s;
 
 }
@@ -141,11 +143,11 @@ button {
 
 /* Button */
 button {
-    width: 100%;
+    width: 100px;
     padding: 10px;
     border: none;
     border-radius: 8px;
-    background-color: gray;
+    background-color: rgb(250, 249, 249);
     font-weight: bold;
     cursor: pointer;
 }

@@ -116,3 +116,19 @@ h2{
 .login-btn{
     margin-top: 10px;
 }
+
+@media (max-width: 768px) {
+    body{
+        background-position: right center; 
+        background-size: cover;
+    }
+    .card{
+        width: 290px;
+        height: auto;
+        padding-bottom: 20px;
+    }
+
+    .card input{
+        width: 70%;
+    }
+}

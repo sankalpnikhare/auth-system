@@ -1,0 +1,140 @@
+/* Reset default spacing */
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+/* Page background */
+body{
+    font-family: Arial, Helvetica, sans-serif;
+
+    background-image: url("https://wallpaperbat.com/img/465457-inspirational-minimalist-desktop-wallpaper-desktop-background.png");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+
+    height:100vh;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+}
+
+/* Container */
+.main-container{
+    width:100%;
+    display:flex;
+    justify-content:center;
+}
+
+/* Card */
+.card{
+    background-color: whitesmoke;
+    width:390px;
+
+    padding:20px 30px 40px 30px;
+
+    border-radius:20px;
+    box-shadow:0 10px 25px rgba(0,0,0,0.15);
+
+    text-align:center;
+}
+
+/* Input group spacing */
+.input-group{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 20px;
+    margin-left: 10px;
+    padding-right: 10px;
+    font-size: 20px;
+}
+.input-group i{
+    font-size:18px;
+    width:20px;
+}
+.login-btn{
+    margin-top: 10px;
+}
+/* Inputs */
+.card input{
+    flex:1;
+    padding:12px 14px;
+
+    border-radius:10px;
+    border:1px solid #ccc;
+
+    font-size:14px;
+
+    outline:none;
+
+    border-color:purple;
+    box-shadow:0 0 5px rgba(128,0,128,0.4);
+}
+
+/* Submit button */
+.submit-btn{
+    margin-top:10px;
+
+    padding:10px 25px;
+
+    font-size:16px;
+    font-weight:bold;
+
+    border:none;
+    border-radius:8px;
+
+    background-color:rgb(86,223,17);
+
+    cursor:pointer;
+
+    transition:0.2s;
+}
+
+/* Hover effect */
+.submit-btn:hover{
+    background-color:rgb(72,143,103);
+    color:white;
+}
+
+/* Mobile responsiveness */
+@media (max-width:768px){
+
+    body{
+        background-position:right center;
+    }
+
+    .card{
+        width:90%;
+        padding:35px 25px;
+    }
+}
+
+
+h1{
+    margin-top: 0;
+    margin-bottom: 20px;
+}
+
+.google-btn{
+    padding: 10px 10px 10px ;   
+    font-size: 14px;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    border-radius: 6px;
+    border: 1px solid black;
+    cursor: pointer;
+    background-color: rgb(255, 255, 255);
+    margin: 0 auto;
+    display: flex;          /* enables alignment */
+    align-items: center;    /* vertical alignment */
+    justify-content: center;/* center everything */
+    gap: 10px; 
+    
+    
+}
+.google-icon {
+    width: 22px;
+    height: 22px;
+}
