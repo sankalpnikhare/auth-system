@@ -14,7 +14,8 @@ body{
     background-position: center;
     background-repeat: no-repeat;
 
-    height:100vh;
+    min-height:100vh;
+padding:20px;
 
     display:flex;
     justify-content:center;
@@ -31,7 +32,8 @@ body{
 /* Card */
 .card{
     background-color: whitesmoke;
-    width:390px;
+    width:100%;
+    max-width:390px;
 
     padding:20px 30px 40px 30px;
 
@@ -43,12 +45,13 @@ body{
 
 /* Input group spacing */
 .input-group{
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    margin-bottom: 20px;
-    margin-left: 10px;
-    padding-right: 10px;
+    display:flex;
+    align-items:center;
+    gap:10px;
+    margin-bottom:20px;
+    
+    /* margin-left: 10px; */
+    /* padding-right: 10px; */
     font-size: 20px;
 }
 .input-group i{
@@ -100,16 +103,26 @@ body{
 }
 
 /* Mobile responsiveness */
-@media (max-width:768px){
-
-    body{
-        background-position:right center;
-    }
+@media (max-width: 768px){
 
     .card{
-        width:90%;
-        padding:35px 25px;
+        width:100%;
+        max-width:340px;
+        padding:20px;
     }
+
+    .card input{
+        font-size:16px;
+    }
+
+    .submit-btn{
+        width:100%;
+    }
+
+    .google-btn{
+        width:100%;
+    }
+
 }
 
 
