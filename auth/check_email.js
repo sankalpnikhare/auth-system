@@ -3,8 +3,8 @@ const mongoose = require('mongoose');
 const usermodel = require('../db/model/usermodel');
 
 
-async function check_username(Username){
-    const user = await usermodel.findOne({username: Username });
+async function check_email(Email){
+    const user = await usermodel.findOne({email: Email });
     if(user){
         return false ;
     }
@@ -12,7 +12,7 @@ async function check_username(Username){
 }
 
 
-module.exports = check_username ;
+module.exports = check_email  ;
 
 
 

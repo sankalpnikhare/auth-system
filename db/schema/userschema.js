@@ -2,12 +2,19 @@ const mongoose = require('mongoose');
 
 
 const userschema = new mongoose.Schema({
-    username: String,
+    googleId: String,
+    name:String , 
     email:{
         type:String ,
         required:true 
     }, 
-    password:String
+    password:{
+        type:String ,
+        required:false
+    },
+    authtype: String,
+    photo:String
+    
 });
 
 module.exports = userschema;

@@ -6,16 +6,17 @@ const hashedpassword = require('../utils/encryption');
 
 
 
-async function create_user(Username , email , password ){
+async function create_user( name , email , password ){
    
-    if(!Username ||!email ||!password ){
+    if(!name || !email ||!password ){
         return false ;
     }
     const hash = await hashedpassword(password);
 
     const data = await usermodel.create({
-        username: Username ,
+        
         email:email ,
+        name:name ,
         password:hash
     })
 
