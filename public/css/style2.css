@@ -1,6 +1,6 @@
 body {
     margin: 0;
-    height: 100vh;
+    height: 1000vh;
     min-height: 100vh;
     background-color: rgb(203, 209, 215);
     background-image: url("https://imgs.search.brave.com/eJlC5kYNZTgugkm7Dj66y4q1svLLS5FdQk5rs0EoYUs/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly93YWxs/cGFwZXJjYXQuY29t/L3cvZnVsbC9lL2Yv/Ni8xNDI3MzAtMzg0/MHgyMTYwLWRlc2t0/b3AtNGstb2NlYW4t/YmFja2dyb3VuZC1p/bWFnZS5qcGc4");
@@ -54,10 +54,12 @@ button {
     background-color: rgb(153, 151, 151);
 }
 
+
 .card-container {
     border: 2px solid red;
     width: 350px ; 
     padding:30px;
+    
 
 }
 
@@ -147,3 +149,4 @@ button {
     font-weight: bold;
     cursor: pointer;
 }
+

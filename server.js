@@ -70,7 +70,9 @@ app.post('/user-login' , async (req,res)=>{
 
 })
 
-
+app.get('/auth/google' , (req,res)=>{
+    res.send("Yes its working fine")
+})
 app.listen(process.env.PORT || 3000 , ()=>{
     console.log(`Server runnning on port ${process.env.PORT}`);
     

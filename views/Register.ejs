@@ -6,10 +6,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Title</title>
     <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
+        integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 
 <body>
-    
+
     <!-- <div id="popup"></div> -->
     <div class="main-container">
         <div class="card-container">
@@ -19,6 +22,7 @@
                     <form action="/create-user" method="post">
                         <div class="input-group">
                             <!-- <img src="/images/username.svg" class="icon"> -->
+                            <i class="fa-solid fa-at"></i>
                             <input type="text" placeholder="Enter username" name="username" required />
 
                         </div>
@@ -26,29 +30,47 @@
                         <br>
 
                         <div class="input-group">
-                            <!-- <img src="/images/envelope.svg" class="icon"> -->
+                            <i class="fa-solid fa-envelope"></i>
                             <input type="text" placeholder="Enter email" name="email" required />
+
 
                         </div>
                         <br>
                         <div class="input-group">
                             <!-- <img src="/images/password.svg" class="icon"> -->
+                            <i class="fa-solid fa-lock"></i>
                             <input type="password" placeholder="Enter password" name="password" required />
 
                         </div>
                         <br>
-                        <button>Submit</button>
+                        <button type="submit" class="submit-btn">Submit</button>
 
                     </form>
+                    <div id="OR">
+
+                        <p>OR</p>
+                    </div>
+                    <form action="/auth/google" method="get">
+                        <button class="google-btn">
+                            <img src="/images/google_logo.svg" class="google-icon">
+                            Authenticate with Google
+                        </button>
+                    </form>
+
+                    <br>
+                    <p class="login-btn">Already have a account?<a href="/login">Login</a></p>
 
                 </div>
             </div>
 
         </div>
 
+
+
+
     </div>
 
-    
+
     <!-- <script>
         document.getElementById('registerForm').addEventListener('submit', async (e) => {
             e.preventDefault();
