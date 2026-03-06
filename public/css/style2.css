@@ -7,7 +7,7 @@ body{
     align-items: center;
     height: 100vh;
     margin: 0;
-    background-size: cover;        /* makes image fill entire screen */
+    background-size: cover;        
     background-position: center;   
     background-repeat: no-repeat;
 }
@@ -80,8 +80,8 @@ button {
     display: none;
     z-index: 9999;
     pointer-events: none;
-    align-items: center;    /* ← add this */
-    justify-content: center; /* ← add this */
+    align-items: center;    
+    justify-content: center; 
 }
 
 #popup.success {
@@ -138,10 +138,10 @@ button {
     outline: none;
     font-size: 14px;
     box-sizing: border-box;
-    /* IMPORTANT */
+    
 }
 
-/* Button */
+
 button {
     width: 100px;
     padding: 10px;

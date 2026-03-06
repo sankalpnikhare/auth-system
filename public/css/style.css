@@ -7,7 +7,7 @@ body{
     align-items: center;
     height: 100vh;
     margin: 0;
-    background-size: cover;        /* makes image fill entire screen */
+    background-size: cover;        
     background-position: center;   
     background-repeat: no-repeat;
 }
@@ -62,7 +62,7 @@ h2{
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 10px;   /* controls space between icon and input */
+    gap: 10px;   
 }
 .input-group i{
     margin-left: 10px;
@@ -85,9 +85,9 @@ h2{
     cursor: pointer;
     background-color: rgb(255, 255, 255);
     margin: 0 auto;
-    display: flex;          /* enables alignment */
-    align-items: center;    /* vertical alignment */
-    justify-content: center;/* center everything */
+    display: flex;          
+    align-items: center;    
+    justify-content: center;
     gap: 10px; 
     
     

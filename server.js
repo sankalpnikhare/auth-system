@@ -10,20 +10,20 @@ const check_username = require('./auth/check_username.js');
 const create_user = require('./auth/create_user.js');
 const hashedpassword = require('./utils/encryption.js');
 const auth = require('./auth/auth.js');
-const app = express(); //express app
+const app = express(); 
 app.use(express.static("public"));
 
 
 mongodbConnect();
 
 
-//Middleware uses 
+
 app.use(express.static(path.join(__dirname, "public")));
 app.use(cors());
 app.set('view engine' , 'ejs');
 app.use(express.json());
 app.use(express.urlencoded({extended:true}));
-//
+
 
 
 app.get('/' , (req,res)=>{
