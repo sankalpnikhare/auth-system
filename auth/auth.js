@@ -1,8 +1,7 @@
-const express = require('express');
-const mongoose = require('mongoose');
+
 const usermodel = require('../db/model/usermodel');
 const bcrypt = require('bcrypt');
-const app = express();
+
 
 
 async function auth(Email , Password){

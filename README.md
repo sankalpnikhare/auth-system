@@ -7,6 +7,7 @@ A secure authentication system built using Node.js, Express, and MongoDB.
 - User Registration
 - Password Hashing using bcrypt
 - Login Authentication
+
 - Protected Routes (JWT - coming soon)
 - Environment Variable Configuration
 - MVC Structure
@@ -31,7 +32,8 @@ A secure authentication system built using Node.js, Express, and MongoDB.
 
    PORT=5000
    MONGO_URI=your_mongodb_connection
-   <!-- JWT_SECRET=your_secret_key -->
+   
+   JWT_SECRET=your_secret_key
 
 4. Run the server:
 

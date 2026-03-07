@@ -5,12 +5,12 @@ const passport = require('passport');
 const session = require('express-session');
 const path = require('path');
 const cors = require('cors');
-const bcrypt = require('bcrypt');
+// const bcrypt = require('bcrypt');
 const mongodbConnect = require('./db/db.js');
-const usermodel = require('./db/model/usermodel.js');
+// const usermodel = require('./db/model/usermodel.js');
 const check_email = require('./auth/check_email.js');
 const create_user = require('./auth/create_user.js');
-const hashedpassword = require('./utils/encryption.js');
+// const hashedpassword = require('./utils/encryption.js');
 const auth = require('./auth/auth.js');
 const app = express(); 
 app.use(express.static("public"));
@@ -76,13 +76,14 @@ app.get('/login' , (req,res)=>{
 
 app.post('/user-login' , async (req,res)=>{
     // const Username = req.body.username ;
-    const Email = req.body.email ;
+     const Email = req.body.email ;
     const Password = req.body.password ; 
     const result = await auth( Email , Password);
     if(result ){
-        res.send("Login successful");
+        return res.send(`Login Successfull `);
     }
-    res.send("Email or Password is incorrect  ")
+    return res.send("Email or Password is incorrect  ")
+    //Login Bug Fixed 
     
     
 
