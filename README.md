@@ -28,7 +28,7 @@ A secure authentication system built using Node.js, Express, and MongoDB.
 1. Clone the repository
 2. Install dependencies:
 
-   npm install
+   npm install , express , express-session , passport , passport-gooogle-oauth2 , bcrpyt , mongose , dotenv 
 
 3. Create a .env file:
 
