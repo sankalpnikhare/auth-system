@@ -7,7 +7,7 @@ A secure authentication system built using Node.js, Express, and MongoDB.
 - User Registration
 - Password Hashing using bcrypt
 - Login Authentication
-
+- Google Authntication
 - Protected Routes (JWT - coming soon)
 - Environment Variable Configuration
 - MVC Structure
@@ -20,6 +20,8 @@ A secure authentication system built using Node.js, Express, and MongoDB.
 - Mongoose
 - bcrypt
 - dotenv
+- Passport Authentication
+- Google Oauth 2.0 Strategy
 
 ## 📦 Installation
 
@@ -37,7 +39,9 @@ A secure authentication system built using Node.js, Express, and MongoDB.
 
 4. Run the server:
 
-   npm start
+   node server.js 
+   - OR
+   nodemon server.js 
 
 ## 📌 Author
 
