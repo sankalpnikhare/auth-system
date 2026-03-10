@@ -8,7 +8,8 @@ A secure authentication system built using Node.js, Express, and MongoDB.
 - Password Hashing using bcrypt
 - Login Authentication
 - Google Authntication
-- Protected Routes (JWT - coming soon)
+- Protected Routes 
+- JWT Authentication
 - Environment Variable Configuration
 - MVC Structure
 
@@ -20,6 +21,7 @@ A secure authentication system built using Node.js, Express, and MongoDB.
 - Mongoose
 - bcrypt
 - dotenv
+- JsonWebToken
 - Passport Authentication
 - Google Oauth 2.0 Strategy
 
@@ -28,7 +30,7 @@ A secure authentication system built using Node.js, Express, and MongoDB.
 1. Clone the repository
 2. Install dependencies:
 
-   npm install , express , express-session , passport , passport-gooogle-oauth2 , bcrpyt , mongose , dotenv 
+   npm install , express , express-session , passport , passport-gooogle-oauth2 , bcrpyt , mongose , dotenv , jsonwebtoken
 
 3. Create a .env file:
 
