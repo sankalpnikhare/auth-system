@@ -88,7 +88,7 @@ app.get('/login' , (req,res)=>{
     res.render('Login')
 
 })
-//Sample
+
 app.post('/user-login' , async (req,res)=>{
     // const Username = req.body.username ;
     const Email = req.body.email ;
