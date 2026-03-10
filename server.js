@@ -49,11 +49,11 @@ app.use(passport.session());
 
 
 app.get('/' , (req,res)=>{
-    res.render('Home');
+    res.render('home');
 });
 
 app.get('/register' , (req,res)=>{
-    res.render('Register');
+    res.render('register');
     
 
 })
@@ -85,7 +85,7 @@ app.post('/create-user', async (req, res) => {
 });
 
 app.get('/login' , (req,res)=>{
-    res.render('Login')
+    res.render('login')
 
 })
 
