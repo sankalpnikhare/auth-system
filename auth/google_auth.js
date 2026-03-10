@@ -2,7 +2,7 @@ const dotenv = require('dotenv');
 dotenv.config();
 
 const passport = require('passport');
-const usermodel = require('./db/model/usermodel');
+const usermodel = require('../db/model/usermodel');
 const GoogleStrategy = require('passport-google-oauth2').Strategy;
 
 passport.use(new GoogleStrategy({

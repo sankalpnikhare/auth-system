@@ -4,6 +4,8 @@ dotenv.config();
 const passport = require('passport');
 const session = require('express-session');
 const path = require('path');
+const jwt = require('jsonwebtoken');
+
 const cors = require('cors');
 // const bcrypt = require('bcrypt');
 const mongodbConnect = require('./db/db.js');
@@ -12,10 +14,13 @@ const check_email = require('./auth/check_email.js');
 const create_user = require('./auth/create_user.js');
 // const hashedpassword = require('./utils/encryption.js');
 const auth = require('./auth/auth.js');
+
+const verifytoken = require('./auth/verifytoken.js');
+const authOrToken = require('./auth/authortoken.js');
 const app = express(); 
 app.use(express.static("public"));
 
-require('./google_auth.js');
+require('./auth/google_auth.js');
 mongodbConnect();
 
 
@@ -55,6 +60,16 @@ app.get('/register' , (req,res)=>{
 
 app.post('/create-user', async (req, res) => {
     const {name ,  email, password } = req.body;
+    const payload = {
+        name:req.body.name , 
+        email:req.body.email
+    }
+    const jwtkey = process.env.JWT_SECRET_KEY ; 
+
+    const token = jwt.sign(payload , jwtkey);
+    res.cookie("token" , token , {
+        httpOnly:true
+    });
 
     const result = await check_email(req.body.email);
     if (!result) {
@@ -76,14 +91,30 @@ app.get('/login' , (req,res)=>{
 
 app.post('/user-login' , async (req,res)=>{
     // const Username = req.body.username ;
-     const Email = req.body.email ;
+    const Email = req.body.email ;
     const Password = req.body.password ; 
-    const result = await auth( Email , Password);
-    if(result ){
-        return res.send(`Login Successfull `);
+    const user = await auth( Email , Password);
+    const payload = {
+         
+        email:req.body.email
     }
-    return res.send("Email or Password is incorrect  ")
-    //Login Bug Fixed 
+    const jwtkey = process.env.JWT_SECRET_KEY ; 
+
+    const token = jwt.sign(payload , jwtkey);
+    res.cookie("token" , token , {
+        httpOnly:true
+    });
+    
+    
+    if(!user){
+        return res.send("Email or Password is incorrect")
+    }
+    req.login(user, function(err){
+        if(err){
+            return res.send("Login Failed")
+        }
+        return res.redirect('/profile');
+    })
     
     
 
@@ -102,7 +133,7 @@ app.get('/auth/google/callback',
 );
 
 
-app.get('/profile',isLoggedIn , (req, res) => {
+app.get('/profile',authOrToken , (req, res) => {
     
     res.send(`Welcome ${req.user.name}`);
 });
