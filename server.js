@@ -36,10 +36,15 @@ app.use(express.urlencoded({extended:true}));
 //     }
 //     res.redirect('/');
 // }
+app.set('trust proxy', 1);
+
 app.use(session({
     secret: process.env.SECRET_KEY,
     resave: false,
-    saveUninitialized: true
+    saveUninitialized: false,
+    cookie: {
+        secure: true
+    }
 }));
 
 app.use(passport.initialize());
