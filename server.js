@@ -30,12 +30,12 @@ app.use(cors());
 app.set('view engine' , 'ejs');
 app.use(express.json());
 app.use(express.urlencoded({extended:true}));
-function isLoggedIn(req, res, next) {
-    if (req.isAuthenticated()) {
-        return next();
-    }
-    res.redirect('/');
-}
+// function isLoggedIn(req, res, next) {
+//     if (req.isAuthenticated()) {
+//         return next();
+//     }
+//     res.redirect('/');
+// }
 app.use(session({
     secret: process.env.SECRET_KEY,
     resave: false,
