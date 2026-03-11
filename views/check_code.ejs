@@ -3,18 +3,34 @@
 
 <head>
     <title>Check Code</title>
+    <link rel="stylesheet" href="/css/style4.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
+        integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 
 <body>
-    <form action="/create-user" method="post">
-        <label>Enter code</label>
-        <input placeholder="Enter Code" name="code">
-        <br><br>
-        <input type="hidden" name="name" value="<%= name %>">
-        <input type="hidden" name="email" value="<%= email %>">
-        <input type="hidden" name="password" value="<%= password %>">
-        <button>Submit</button>
-    </form>
+    <div class="main-container">
+        <div class="card-container">
+            <div class="card">
+                <div class="card-content">
+                    <form action="/create-user" method="post">
+                        <!-- <label>Enter code</label> -->
+                        <h2>Enter code </h2>
+                        <br><br>
+                        <input placeholder="Enter Code" name="code">
+                        <br><br>
+                        <p>A email has been sent to your email id which is <%= email%></p>
+                        <br>
+                        <input type="hidden" name="name" value="<%= name %>">
+                        <input type="hidden" name="email" value="<%= email %>">
+                        <input type="hidden" name="password" value="<%= password %>">
+                        <button class="submit-btn">Submit</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
 </body>
 
 </html>
