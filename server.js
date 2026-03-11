@@ -81,14 +81,19 @@ app.post('/check-otp' , async (req,res)=>{
     otp = String(code);
 
     sendMail(email , "Code" , otp);
-    res.render('check_code')
+    res.render('check_code' , {name,email,password});
 
 })
 
 app.post('/create-user', async (req, res) => {
 
     const { name, email, password } = req.body;
-
+    const code = String(req.body.code);
+    const check = checkotp(code, otp);
+    if(!check){
+        return res.send("OTP is wrong")
+    }
+    
     
 
     const created = await create_user(name, email, password);

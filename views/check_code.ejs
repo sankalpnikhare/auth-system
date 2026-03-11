@@ -1,14 +1,20 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <title>Check Code</title>
-    </head>
-    <body>
-        <form action="/create-user" method="post">
-            <label>Enter code</label>
-            <input placeholder="Enter Code" name="code">
-            <br><br>
-            <button>Submit</button>
-        </form>
-    </body>
+
+<head>
+    <title>Check Code</title>
+</head>
+
+<body>
+    <form action="/create-user" method="post">
+        <label>Enter code</label>
+        <input placeholder="Enter Code" name="code">
+        <br><br>
+        <input type="hidden" name="name" value="<%= name %>">
+        <input type="hidden" name="email" value="<%= email %>">
+        <input type="hidden" name="password" value="<%= password %>">
+        <button>Submit</button>
+    </form>
+</body>
+
 </html>
