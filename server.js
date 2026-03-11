@@ -66,17 +66,22 @@ app.get('/register', (req, res) => {
     res.render('register');
 });
 
-app.post('/check-otp' , (req,res)=>{
+app.post('/check-otp' , async (req,res)=>{
     const {name, email , password} = req.body ; 
     const valid = check_credentials(name,email,password);
     if(!valid){
         return res.send("Something is missing");
     }
+    const emailAvailable = await check_email(email);
+
+    if (!emailAvailable) {
+        return res.send("Email already taken");
+    }
     const code = Math.floor(100000 + Math.random() * 900000);
     otp = String(code);
 
     sendMail(email , "Code" , otp);
-    res.render('Check_code')
+    res.render('check_code')
 
 })
 
@@ -84,11 +89,7 @@ app.post('/create-user', async (req, res) => {
 
     const { name, email, password } = req.body;
 
-    const emailAvailable = await check_email(email);
-
-    if (!emailAvailable) {
-        return res.send("Email already taken");
-    }
+    
 
     const created = await create_user(name, email, password);
 
