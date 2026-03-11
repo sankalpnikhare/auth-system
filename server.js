@@ -13,9 +13,13 @@ const mongodbConnect = require('./db/db.js');
 
 const check_email = require('./auth/check_email.js');
 const create_user = require('./auth/create_user.js');
+
 const auth = require('./auth/auth.js');
 
 const authOrToken = require('./auth/authortoken.js');
+const check_credentials = require('./auth/check_credentials.js');
+const checkotp = require('./auth/checkotp.js');
+const sendMail = require('./auth/sendMail.js');
 
 const app = express();
 
@@ -28,6 +32,7 @@ app.set('trust proxy', 1);
 
 app.use(cors());
 app.use(cookieParser());
+let otp ; 
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
@@ -60,6 +65,20 @@ app.get('/', (req, res) => {
 app.get('/register', (req, res) => {
     res.render('register');
 });
+
+app.post('/check-otp' , (req,res)=>{
+    const {name, email , password} = req.body ; 
+    const valid = check_credentials(name,email,password);
+    if(!valid){
+        return res.send("Something is missing");
+    }
+    const code = Math.floor(100000 + Math.random() * 900000);
+    otp = String(code);
+
+    sendMail(email , "Code" , otp);
+    res.render('Check_code')
+
+})
 
 app.post('/create-user', async (req, res) => {
 

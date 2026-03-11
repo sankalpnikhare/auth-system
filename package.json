@@ -24,6 +24,7 @@
     "git": "^0.1.5",
     "jsonwebtoken": "^9.0.3",
     "mongoose": "^9.1.5",
+    "nodemailer": "^8.0.2",
     "passport": "^0.7.0",
     "passport-google-oauth2": "^0.2.0"
   }
