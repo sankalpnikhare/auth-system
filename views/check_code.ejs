@@ -27,6 +27,8 @@
                         <input type="hidden" name="password" value="<%= password %>">
                         <button class="submit-btn">Submit</button>
                     </form>
+                    <p id="timer">Resend OTP in 60s</p>
+                    <button id="resendBtn" disabled onclick="resendOTP()">Resend OTP</button>
                 </div>
             </div>
         </div>
@@ -34,3 +36,29 @@
 </body>
 
 </html>
+
+<script>
+let timeLeft = 60;
+
+const timer = document.getElementById("timer");
+const resendBtn = document.getElementById("resendBtn");
+
+const countdown = setInterval(() => {
+
+    timeLeft--;
+
+    timer.innerText = `Resend OTP in ${timeLeft}s`;
+
+    if(timeLeft <= 0){
+        clearInterval(countdown);
+        timer.innerText = "You can resend OTP now";
+        resendBtn.disabled = false;
+    }
+
+}, 1000);
+
+
+function resendOTP(){
+    window.location.href = "/resend-otp";
+}
+</script>
