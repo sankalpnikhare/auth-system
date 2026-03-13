@@ -207,7 +207,20 @@ app.get('/resend-otp' , async  (req,res)=>{
     res.render('check_code');
 })
 
+app.get('/forgot-password' , (req,res)=>{
+    res.render('forgot_pass');
+})
 
+app.post('/pass_email' , async (req,res)=>{
+    const code = Math.floor(100000 + Math.random() * 900000);
+    otp = String(code);
+    req.session.otp  = otp ;
+    email = req.session.email  ;
+
+    await sendMail(email , "Password Reset" , otp);
+    res.render('check_code');
+
+})
 
 app.listen(process.env.PORT || 3000, () => {
     console.log(`Server running on port ${process.env.PORT || 3000}`);
