@@ -193,13 +193,15 @@ app.get('/logout', (req, res) => {
     });
 
 });
-app.get('/resend-otp' ,async  (req,res)=>{
+app.get('/resend-otp' , async  (req,res)=>{
     const code = Math.floor(100000 + Math.random() * 900000);
     otp = String(code);
     req.session.otp  = otp ;
-
+    email = req.session.email  ;
+    name = req.session.name ; 
+    password = req.session.password ;
     await sendMail(email , "Code" , otp);
-    res.redirect('/check-otp')
+    res.render('check_code');
 })
 
 
