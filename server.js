@@ -79,20 +79,26 @@ app.post('/check-otp' , async (req,res)=>{
     }
     const code = Math.floor(100000 + Math.random() * 900000);
     otp = String(code);
+    req.session.otp = otp ;
+    req.session.name = name ;
+    req.session.email = email ;
+    req.session.password = password ;
+    
 
-    sendMail(email , "Code" , otp);
+    await sendMail(email , "Code" , otp);
     res.render('check_code' , {name,email,password});
 
 })
 
 app.post('/create-user', async (req, res) => {
 
-    const { name, email, password } = req.body;
-    const code = String(req.body.code);
-    const check = checkotp(code, otp);
-    if(!check){
-        return res.send("OTP is wrong")
+    
+    const code = req.body.code ;
+    if(code !== req.session.otp){
+        return res.send("Otp is wrong ");
     }
+    const {name,email,password} = req.session ;
+   
     
     
 
@@ -187,7 +193,14 @@ app.get('/logout', (req, res) => {
     });
 
 });
+app.get('/resend-otp' ,async  (req,res)=>{
+    const code = Math.floor(100000 + Math.random() * 900000);
+    otp = String(code);
+    req.session.otp  = otp ;
 
+    await sendMail(email , "Code" , otp);
+    res.redirect('/check-otp')
+})
 
 
 
