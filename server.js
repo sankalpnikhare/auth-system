@@ -20,6 +20,7 @@ const authOrToken = require('./auth/authortoken.js');
 const check_credentials = require('./auth/check_credentials.js');
 const checkotp = require('./auth/checkotp.js');
 const sendMail = require('./auth/sendMail.js');
+const hashedpassword = require('./utils/encryption.js');
 
 const app = express();
 
@@ -254,7 +255,13 @@ app.post('/reset-pass', async (req, res) => {
 
 app.post('/re_pass' , async(req,res)=>{
     const {password ,  email} = req.body;
-    
+    const user = await check_email(email);
+    const hash = await hashedpassword(password);
+    user.password = hash  ;
+    await user.save() ; 
+    req.session.destroy();
+    res.send("Password changed successfully ");
+
 })
 
 app.listen(process.env.PORT || 3000, () => {
