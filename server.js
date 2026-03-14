@@ -242,9 +242,19 @@ app.post('/pass_email', async (req, res) => {
 })
 
 app.post('/reset-pass', async (req, res) => {
+    email = req.body.email ; 
+
+    res.render('reset_pass' , {email});
+
+    
     
 
 
+})
+
+app.post('/re_pass' , async(req,res)=>{
+    const {password ,  email} = req.body;
+    
 })
 
 app.listen(process.env.PORT || 3000, () => {
