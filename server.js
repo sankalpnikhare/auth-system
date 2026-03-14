@@ -32,10 +32,11 @@ app.set('trust proxy', 1);
 
 app.use(cors());
 app.use(cookieParser());
-let otp ; 
+let otp;
 
-app.use(express.json());
+
 app.use(express.urlencoded({ extended: true }));
+app.use(express.json());
 
 app.use(express.static(path.join(__dirname, "public")));
 
@@ -66,10 +67,10 @@ app.get('/register', (req, res) => {
     res.render('register');
 });
 
-app.post('/check-otp' , async (req,res)=>{
-    const {name, email , password} = req.body ; 
-    const valid = check_credentials(name,email,password);
-    if(!valid){
+app.post('/check-otp', async (req, res) => {
+    const { name, email, password } = req.body;
+    const valid = check_credentials(name, email, password);
+    if (!valid) {
         return res.send("Something is missing");
     }
     const emailAvailable = await check_email(email);
@@ -79,29 +80,29 @@ app.post('/check-otp' , async (req,res)=>{
     }
     const code = Math.floor(100000 + Math.random() * 900000);
     otp = String(code);
-    req.session.otp = otp ;
-    req.session.name = name ;
-    req.session.email = email ;
-    req.session.password = password ;
+    req.session.otp = otp;
+    req.session.name = name;
+    req.session.email = email;
+    req.session.password = password;
     console.log(req.session);
-    
 
-    await sendMail(email , "Code" , otp);
-    res.render('check_code' , {name,email,password});
+
+    await sendMail(email, "Code", otp);
+    res.render('check_code', { name, email, password });
 
 })
 
 app.post('/create-user', async (req, res) => {
 
-    
-    const code = req.body.code ;
-    if(code !== req.session.otp){
+
+    const code = req.body.code;
+    if (code !== req.session.otp) {
         return res.send("Otp is wrong ");
     }
-    const {name,email,password} = req.session ;
-   
-    
-    
+    const { name, email, password } = req.session;
+
+
+
 
     const created = await create_user(name, email, password);
 
@@ -194,32 +195,35 @@ app.get('/logout', (req, res) => {
     });
 
 });
-app.get('/resend-otp' , async  (req,res)=>{
+app.get('/resend-otp', async (req, res) => {
     const code = Math.floor(100000 + Math.random() * 900000);
     otp = String(code);
-    req.session.otp  = otp ;
-    email = req.session.email  ;
-    name = req.session.name ; 
+    req.session.otp = otp;
+    email = req.session.email;
+    name = req.session.name;
     console.log(req.session);
-    
-    password = req.session.password ;
-    await sendMail(email , "Code" , otp);
+
+    password = req.session.password;
+    await sendMail(email, "Code", otp);
     res.render('check_code');
 })
 
-app.get('/forgot-password' , (req,res)=>{
+app.get('/forgot-password', (req, res) => {
     res.render('forgot_pass');
 })
 
-app.post('/pass_email' , async (req,res)=>{
+app.post('/pass_email', async (req, res) => {
+    // console.log("Body:", req.body);
+    console.log("Email:", req.body.email);
+    email = req.body.email
     const code = Math.floor(100000 + Math.random() * 900000);
-    otp = String(code);
-    req.session.otp  = otp ;
-    email = req.session.email  ;
+    const otp = String(code);
 
-    await sendMail(email , "Password Reset" , otp);
-    res.render('check_code');
+    req.session.otp = otp;
 
+    await sendMail(req.body.email, "Pass reset", otp);
+
+    res.render('check_code2' , {email})
 })
 
 app.listen(process.env.PORT || 3000, () => {

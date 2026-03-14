@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Check Code</title>
+    <link rel="stylesheet" href="/css/style4.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
+        integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+
+<body>
+    <div class="main-container">
+        <div class="card-container">
+            <div class="card">
+                <div class="card-content">
+                    <form action="/reset-pass" method="post">
+                        <!-- <label>Enter code</label> -->
+                        <h2>Enter code </h2>
+                        <br><br>
+                        <input placeholder="Enter Code" name="code">
+                        <br><br>
+                        
+                        <br>
+                        <input type="hidden" name="email" value="<%= email %>">
+                        
+                        
+                        <button class="submit-btn">Submit</button>
+                    </form>
+                    <br><br>
+                    <p id="timer">Resend OTP in 60s</p>
+                    <br>
+                    <button id="resendBtn" disabled onclick="resendOTP()">Resend OTP</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
+
+<script>
+let timeLeft = 60;
+
+const timer = document.getElementById("timer");
+const resendBtn = document.getElementById("resendBtn");
+
+const countdown = setInterval(() => {
+
+    timeLeft--;
+
+    timer.innerText = `Resend OTP in ${timeLeft}s`;
+
+    if(timeLeft <= 0){
+        clearInterval(countdown);
+        timer.innerText = "You can resend OTP now";
+        resendBtn.disabled = false;
+    }
+
+}, 1000);
+
+
+function resendOTP(){
+    window.location.href = "/resend-otp";
+}
+</script>
