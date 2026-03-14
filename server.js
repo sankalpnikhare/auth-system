@@ -85,7 +85,7 @@ app.post('/check-otp', async (req, res) => {
     req.session.name = name;
     req.session.email = email;
     req.session.password = password;
-    console.log(req.session);
+    
 
 
     await sendMail(email, "Code", otp);
@@ -202,7 +202,7 @@ app.get('/resend-otp', async (req, res) => {
     req.session.otp = otp;
     email = req.session.email;
     name = req.session.name;
-    console.log(req.session);
+    
 
     password = req.session.password;
     await sendMail(email, "Code", otp);
@@ -214,7 +214,7 @@ app.get('/forgot-password', (req, res) => {
 })
 
 app.post('/pass_email',authOrToken ,  async (req, res) => {
-    // console.log("Body:", req.body);
+    
     const user = await check_email(req.body.email);
     if (!user) {
         return res.send("This user isnt in the db")
