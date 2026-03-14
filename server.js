@@ -76,7 +76,7 @@ app.post('/check-otp', async (req, res) => {
     }
     const emailAvailable = await check_email(email);
 
-    if (!emailAvailable) {
+    if (emailAvailable) {
         return res.send("Email already taken");
     }
     const code = Math.floor(100000 + Math.random() * 900000);
@@ -213,7 +213,7 @@ app.get('/forgot-password', (req, res) => {
     res.render('forgot_pass');
 })
 
-app.post('/pass_email', async (req, res) => {
+app.post('/pass_email',authOrToken ,  async (req, res) => {
     // console.log("Body:", req.body);
     const user = await check_email(req.body.email);
     if (!user) {
@@ -242,7 +242,7 @@ app.post('/pass_email', async (req, res) => {
 
 })
 
-app.post('/reset-pass', async (req, res) => {
+app.post('/reset-pass',authOrToken , async (req, res) => {
     email = req.body.email ; 
 
     res.render('reset_pass' , {email});
@@ -253,7 +253,7 @@ app.post('/reset-pass', async (req, res) => {
 
 })
 
-app.post('/re_pass' , async(req,res)=>{
+app.post('/re_pass' ,authOrToken,  async(req,res)=>{
     const {password ,  email} = req.body;
     const user = await check_email(email);
     const hash = await hashedpassword(password);
