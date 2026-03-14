@@ -214,16 +214,35 @@ app.get('/forgot-password', (req, res) => {
 
 app.post('/pass_email', async (req, res) => {
     // console.log("Body:", req.body);
-    console.log("Email:", req.body.email);
-    email = req.body.email
-    const code = Math.floor(100000 + Math.random() * 900000);
-    const otp = String(code);
+    const user = await check_email(req.body.email);
+    if (!user) {
+        return res.send("This user isnt in the db")
 
-    req.session.otp = otp;
+    }
 
-    await sendMail(req.body.email, "Pass reset", otp);
 
-    res.render('check_code2' , {email})
+        // console.log("Email:", user.email);
+        email = user.email
+
+        const code = Math.floor(100000 + Math.random() * 900000);
+        const otp = String(code);
+
+        req.session.otp = otp;
+
+        await sendMail(req.body.email, "Pass reset", otp);
+
+        return res.render('check_code2', { email })
+    // return res.send(user);
+
+
+
+
+
+})
+
+app.post('/reset-pass', async (req, res) => {
+
+
 })
 
 app.listen(process.env.PORT || 3000, () => {

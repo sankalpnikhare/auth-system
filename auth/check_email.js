@@ -6,9 +6,9 @@ const usermodel = require('../db/model/usermodel');
 async function check_email(Email){
     const user = await usermodel.findOne({email: Email });
     if(user){
-        return false ;
+        return user; ;
     }
-    return true 
+    return false ; 
 }
 
 
