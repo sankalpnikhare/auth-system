@@ -221,8 +221,9 @@ app.post('/pass_email', async (req, res) => {
     }
 
 
-        // console.log("Email:", user.email);
-        email = user.email
+        
+        email = user.email;
+        name = user.name;
 
         const code = Math.floor(100000 + Math.random() * 900000);
         const otp = String(code);
@@ -231,8 +232,8 @@ app.post('/pass_email', async (req, res) => {
 
         await sendMail(req.body.email, "Pass reset", otp);
 
-        return res.render('check_code2', { email })
-    // return res.send(user);
+        return res.render('check_code2', { email , name  })
+    
 
 
 
@@ -241,6 +242,7 @@ app.post('/pass_email', async (req, res) => {
 })
 
 app.post('/reset-pass', async (req, res) => {
+    
 
 
 })
