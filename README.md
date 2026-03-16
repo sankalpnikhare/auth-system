@@ -7,7 +7,7 @@ A secure authentication system built using Node.js, Express, and MongoDB.
 - User Registration
 - Password Hashing using bcrypt
 - Login Authentication
-- Google Authntication
+- Google Authntication (Google Auth will work o Hosted device only because of Localhost Redirect URl)
 - Protected Routes 
 - JWT Authentication
 - Environment Variable Configuration
