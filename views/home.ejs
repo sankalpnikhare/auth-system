@@ -1,39 +1,137 @@
 <!DOCTYPE html>
-<html>
-    <head>
-        <title>Home</title>
-        <link rel="stylesheet" href="/css/style2.css">
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-    </head>
-    <body>
-        <div class="links">
-            <div class="link1">
-                <!-- <a href="login">Login</a> -->
-                <form action="/register" method="get">
-                    <button>Register</button>
-                </form>
+<html lang="en">
 
-            </div>
-            <br><br>
-            <div class="link2">
-                <!-- <a  href="register">Register</a> -->
-                <form action="/login" method="get">
-                    <button>Login</button>
-                </form>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-            </div>
+        body {
+            font-family: 'Inter', sans-serif;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #fafafa;
+            color: #3a3a3a;
+        }
 
-        </div>
-        <div class="contact">
-            <div class="mail">
-                <a href="mailto:test@gmail.com">Contact</a>
+        .card {
+            width: 100%;
+            max-width: 380px;
+            padding: 44px 40px;
+            margin: 20px;
+            background: #fff;
+            border-radius: 12px;
+            border: 1px solid #eee;
+            box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
+            text-align: center;
+        }
 
+        h1 {
+            font-size: 22px;
+            font-weight: 500;
+            letter-spacing: -0.3px;
+            margin-bottom: 4px;
+        }
 
-            </div>
+        .subtitle {
+            font-size: 13px;
+            color: #999;
+            font-weight: 300;
+            margin-bottom: 36px;
+        }
 
-        </div>
-        
-        
-        
-    </body>
+        .btn-primary {
+            display: block;
+            width: 100%;
+            padding: 12px;
+            background: #3a3a3a;
+            color: #fafafa;
+            border: none;
+            border-radius: 6px;
+            font-size: 13px;
+            font-weight: 500;
+            font-family: 'Inter', sans-serif;
+            letter-spacing: 0.5px;
+            cursor: pointer;
+            transition: opacity 0.3s;
+        }
+
+        .btn-primary:hover {
+            opacity: 0.8;
+        }
+
+        .btn-outline {
+            display: block;
+            width: 100%;
+            padding: 12px;
+            margin-top: 12px;
+            background: transparent;
+            border: 1px solid #ddd;
+            border-radius: 6px;
+            font-size: 13px;
+            font-weight: 500;
+            font-family: 'Inter', sans-serif;
+            letter-spacing: 0.5px;
+            color: #3a3a3a;
+            cursor: pointer;
+            transition: border-color 0.3s;
+        }
+
+        .btn-outline:hover {
+            border-color: #aaa;
+        }
+
+        .contact-link {
+            margin-top: 32px;
+            font-size: 12px;
+            color: #bbb;
+            font-weight: 300;
+        }
+
+        .contact-link a {
+            color: #aaa;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .contact-link a:hover {
+            color: #3a3a3a;
+        }
+
+        @media (max-width: 480px) {
+            .card {
+                padding: 36px 24px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="card">
+        <h1>Welcome</h1>
+        <p class="subtitle">Get started with your account</p>
+
+        <form action="/register" method="get">
+            <button type="submit" class="btn-primary">Register</button>
+        </form>
+
+        <form action="/login" method="get">
+            <button type="submit" class="btn-outline">Login</button>
+        </form>
+
+        <p class="contact-link"><a href="mailto:test@gmail.com">Contact us</a></p>
+    </div>
+
+</body>
+
 </html>

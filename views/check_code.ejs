@@ -1,66 +1,200 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
 <head>
-    <title>Check Code</title>
-    <link rel="stylesheet" href="/css/style4.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
-        integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw=="
-        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Verify Code</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #fafafa;
+            color: #3a3a3a;
+        }
+
+        .card {
+            width: 100%;
+            max-width: 380px;
+            padding: 44px 40px;
+            margin: 20px;
+            background: #fff;
+            border-radius: 12px;
+            border: 1px solid #eee;
+            box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
+        }
+
+        h2 {
+            font-size: 22px;
+            font-weight: 500;
+            letter-spacing: -0.3px;
+            margin-bottom: 4px;
+        }
+
+        .subtitle {
+            font-size: 13px;
+            color: #999;
+            font-weight: 300;
+            margin-bottom: 32px;
+            line-height: 1.5;
+        }
+
+        .input-group {
+            margin-bottom: 20px;
+        }
+
+        .input-group label {
+            display: block;
+            font-size: 11px;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 0.8px;
+            color: #aaa;
+            margin-bottom: 6px;
+        }
+
+        .input-group input {
+            width: 100%;
+            padding: 11px 0;
+            background: transparent;
+            border: none;
+            border-bottom: 1px solid #ddd;
+            font-size: 14px;
+            font-family: 'Inter', sans-serif;
+            color: #3a3a3a;
+            outline: none;
+            transition: border-color 0.3s;
+        }
+
+        .input-group input:focus {
+            border-bottom-color: #3a3a3a;
+        }
+
+        .input-group input::placeholder {
+            color: #ccc;
+        }
+
+        .submit-btn {
+            width: 100%;
+            padding: 12px;
+            margin-top: 8px;
+            background: #3a3a3a;
+            color: #fafafa;
+            border: none;
+            border-radius: 6px;
+            font-size: 13px;
+            font-weight: 500;
+            font-family: 'Inter', sans-serif;
+            letter-spacing: 0.5px;
+            cursor: pointer;
+            transition: opacity 0.3s;
+        }
+
+        .submit-btn:hover {
+            opacity: 0.8;
+        }
+
+        .timer-section {
+            text-align: center;
+            margin-top: 28px;
+            padding-top: 24px;
+            border-top: 1px solid #eee;
+        }
+
+        #timer {
+            font-size: 13px;
+            color: #aaa;
+            font-weight: 300;
+            margin-bottom: 12px;
+        }
+
+        #resendBtn {
+            padding: 10px 24px;
+            background: transparent;
+            border: 1px solid #ddd;
+            border-radius: 6px;
+            font-size: 12px;
+            font-weight: 500;
+            font-family: 'Inter', sans-serif;
+            color: #3a3a3a;
+            cursor: pointer;
+            transition: border-color 0.3s;
+        }
+
+        #resendBtn:hover:not(:disabled) {
+            border-color: #aaa;
+        }
+
+        #resendBtn:disabled {
+            opacity: 0.4;
+            cursor: not-allowed;
+        }
+
+        @media (max-width: 480px) {
+            .card {
+                padding: 36px 24px;
+            }
+        }
+    </style>
 </head>
 
 <body>
-    <div class="main-container">
-        <div class="card-container">
-            <div class="card">
-                <div class="card-content">
-                    <form action="/create-user" method="post">
-                        <!-- <label>Enter code</label> -->
-                        <h2>Enter code </h2>
-                        <br><br>
-                        <input placeholder="Enter Code" name="code">
-                        <br><br>
-                        <p>A email has been sent to your email id which is <%= email%></p>
-                        <br>
-                        <input type="hidden" name="name" value="<%= name %>">
-                        <input type="hidden" name="email" value="<%= email %>">
-                        <input type="hidden" name="password" value="<%= password %>">
-                        <button class="submit-btn">Submit</button>
-                    </form>
-                    <br><br>
-                    <p id="timer">Resend OTP in 60s</p>
-                    <br>
-                    <button id="resendBtn" disabled onclick="resendOTP()">Resend OTP</button>
-                </div>
+
+    <div class="card">
+        <h2>Verify Code</h2>
+        <p class="subtitle">A verification code has been sent to <strong>
+                <%= email %>
+            </strong></p>
+
+        <form action="/create-user" method="post">
+            <div class="input-group">
+                <label>Code</label>
+                <input type="text" placeholder="Enter verification code" name="code" required />
             </div>
+
+            <input type="hidden" name="name" value="<%= name %>">
+            <input type="hidden" name="email" value="<%= email %>">
+            <input type="hidden" name="password" value="<%= password %>">
+
+            <button type="submit" class="submit-btn">Verify</button>
+        </form>
+
+        <div class="timer-section">
+            <p id="timer">Resend OTP in 60s</p>
+            <button id="resendBtn" disabled onclick="resendOTP()">Resend OTP</button>
         </div>
     </div>
+
+    <script>
+        let timeLeft = 60;
+        const timer = document.getElementById("timer");
+        const resendBtn = document.getElementById("resendBtn");
+
+        const countdown = setInterval(() => {
+            timeLeft--;
+            timer.innerText = `Resend OTP in ${timeLeft}s`;
+            if (timeLeft <= 0) {
+                clearInterval(countdown);
+                timer.innerText = "You can resend OTP now";
+                resendBtn.disabled = false;
+            }
+        }, 1000);
+
+        function resendOTP() {
+            window.location.href = "/resend-otp";
+        }
+    </script>
+
 </body>
 
 </html>
-
-<script>
-let timeLeft = 60;
-
-const timer = document.getElementById("timer");
-const resendBtn = document.getElementById("resendBtn");
-
-const countdown = setInterval(() => {
-
-    timeLeft--;
-
-    timer.innerText = `Resend OTP in ${timeLeft}s`;
-
-    if(timeLeft <= 0){
-        clearInterval(countdown);
-        timer.innerText = "You can resend OTP now";
-        resendBtn.disabled = false;
-    }
-
-}, 1000);
-
-
-function resendOTP(){
-    window.location.href = "/resend-otp";
-}
-</script>

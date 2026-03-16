@@ -1,35 +1,133 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Reset Password</title>
-    <link rel="stylesheet" href="/css/style4.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
-        integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw=="
-        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #fafafa;
+            color: #3a3a3a;
+        }
+
+        .card {
+            width: 100%;
+            max-width: 380px;
+            padding: 44px 40px;
+            margin: 20px;
+            background: #fff;
+            border-radius: 12px;
+            border: 1px solid #eee;
+            box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
+        }
+
+        h2 {
+            font-size: 22px;
+            font-weight: 500;
+            letter-spacing: -0.3px;
+            margin-bottom: 4px;
+        }
+
+        .subtitle {
+            font-size: 13px;
+            color: #999;
+            font-weight: 300;
+            margin-bottom: 32px;
+            line-height: 1.5;
+        }
+
+        .input-group {
+            margin-bottom: 20px;
+        }
+
+        .input-group label {
+            display: block;
+            font-size: 11px;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 0.8px;
+            color: #aaa;
+            margin-bottom: 6px;
+        }
+
+        .input-group input {
+            width: 100%;
+            padding: 11px 0;
+            background: transparent;
+            border: none;
+            border-bottom: 1px solid #ddd;
+            font-size: 14px;
+            font-family: 'Inter', sans-serif;
+            color: #3a3a3a;
+            outline: none;
+            transition: border-color 0.3s;
+        }
+
+        .input-group input:focus {
+            border-bottom-color: #3a3a3a;
+        }
+
+        .input-group input::placeholder {
+            color: #ccc;
+        }
+
+        .submit-btn {
+            width: 100%;
+            padding: 12px;
+            margin-top: 8px;
+            background: #3a3a3a;
+            color: #fafafa;
+            border: none;
+            border-radius: 6px;
+            font-size: 13px;
+            font-weight: 500;
+            font-family: 'Inter', sans-serif;
+            letter-spacing: 0.5px;
+            cursor: pointer;
+            transition: opacity 0.3s;
+        }
+
+        .submit-btn:hover {
+            opacity: 0.8;
+        }
+
+        @media (max-width: 480px) {
+            .card {
+                padding: 36px 24px;
+            }
+        }
+    </style>
 </head>
 
 <body>
-    <div class="main-container">
-        <div class="card-container">
-            <div class="card">
-                <div class="card-content">
-                    <form action="/" method="post">
-                        
-                        <h2>Enter Email </h2>
-                        <br><br>
-                        <input placeholder="Enter Email" name="email">
-                        <br><br>
-                        
-                        <br>
-                        
-                        <button type="submit" class="submit-btn">Submit</button>
-                    </form>
-                    
-                </div>
+
+    <div class="card">
+        <h2>Enter Email</h2>
+        <p class="subtitle">Provide your email to continue</p>
+
+        <form action="/" method="post">
+            <div class="input-group">
+                <label>Email</label>
+                <input type="email" placeholder="you@example.com" name="email" required />
             </div>
-        </div>
+
+            <button type="submit" class="submit-btn">Continue</button>
+        </form>
     </div>
+
 </body>
 
 </html>
