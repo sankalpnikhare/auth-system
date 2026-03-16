@@ -1,60 +1,234 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login</title>
-    <link rel="stylesheet" href="/css/style3.css">
-     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
-        integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw=="
-        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #fafafa;
+            color: #3a3a3a;
+        }
+
+        .card {
+            width: 100%;
+            max-width: 380px;
+            padding: 44px 40px;
+            margin: 20px;
+            background: #fff;
+            border-radius: 12px;
+            border: 1px solid #eee;
+            box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
+        }
+
+        h2 {
+            font-size: 22px;
+            font-weight: 500;
+            letter-spacing: -0.3px;
+            margin-bottom: 4px;
+        }
+
+        .subtitle {
+            font-size: 13px;
+            color: #999;
+            font-weight: 300;
+            margin-bottom: 36px;
+        }
+
+        .input-group {
+            margin-bottom: 16px;
+        }
+
+        .input-group label {
+            display: block;
+            font-size: 11px;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 0.8px;
+            color: #aaa;
+            margin-bottom: 6px;
+        }
+
+        .input-group input {
+            width: 100%;
+            padding: 11px 0;
+            background: transparent;
+            border: none;
+            border-bottom: 1px solid #ddd;
+            font-size: 14px;
+            font-family: 'Inter', sans-serif;
+            color: #3a3a3a;
+            outline: none;
+            transition: border-color 0.3s;
+        }
+
+        .input-group input:focus {
+            border-bottom-color: #3a3a3a;
+        }
+
+        .input-group input::placeholder {
+            color: #ccc;
+        }
+
+        .forgot-link {
+            text-align: right;
+            margin-top: 4px;
+            margin-bottom: 8px;
+        }
+
+        .forgot-link a {
+            font-size: 12px;
+            color: #aaa;
+            text-decoration: none;
+            font-weight: 400;
+            transition: color 0.3s;
+        }
+
+        .forgot-link a:hover {
+            color: #3a3a3a;
+        }
+
+        .submit-btn {
+            width: 100%;
+            padding: 12px;
+            margin-top: 20px;
+            background: #3a3a3a;
+            color: #fafafa;
+            border: none;
+            border-radius: 6px;
+            font-size: 13px;
+            font-weight: 500;
+            font-family: 'Inter', sans-serif;
+            letter-spacing: 0.5px;
+            cursor: pointer;
+            transition: opacity 0.3s;
+        }
+
+        .submit-btn:hover {
+            opacity: 0.8;
+        }
+
+        .divider {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            margin: 28px 0;
+        }
+
+        .divider::before,
+        .divider::after {
+            content: '';
+            flex: 1;
+            height: 1px;
+            background: #ddd;
+        }
+
+        .divider span {
+            font-size: 11px;
+            color: #bbb;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        .google-btn {
+            width: 100%;
+            padding: 11px;
+            background: transparent;
+            border: 1px solid #ddd;
+            border-radius: 6px;
+            font-size: 13px;
+            font-family: 'Inter', sans-serif;
+            color: #3a3a3a;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            transition: border-color 0.3s;
+        }
+
+        .google-btn:hover {
+            border-color: #aaa;
+        }
+
+        .google-btn img {
+            width: 16px;
+            height: 16px;
+        }
+
+        .register-link {
+            text-align: center;
+            margin-top: 32px;
+            font-size: 13px;
+            color: #aaa;
+            font-weight: 300;
+        }
+
+        .register-link a {
+            color: #3a3a3a;
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        .register-link a:hover {
+            text-decoration: underline;
+        }
+
+        @media (max-width: 480px) {
+            .card {
+                padding: 36px 24px;
+            }
+        }
+    </style>
 </head>
 
 <body>
-    <div class="main-container">
-        <div class="card-container">
-            <div class="card">
-                <div class="card-content">
-                    <div class="heading">
-                        <h1>Login</h1>
-                    </div>
-                    <form action="/user-login" method="post">
-                        <div class="input-group">
-                            <i class="fa-solid fa-envelope"></i>
-                            <input placeholder="Enter Email" name="email">
 
-                        </div>
+    <div class="card">
+        <h2>Welcome Back</h2>
+        <p class="subtitle">Sign in to your account</p>
 
-                        <br>
-                        <div class="input-group">
-                            <i class="fa-solid fa-lock"></i>
-                            <input type="password" placeholder="Enter Password" name="password">
-
-                        </div>
-                        <p><a id="fp" href="/forgot-password">Forgot Password?</a></p>
-
-                        <br>
-                        <button type="submit" class="submit-btn">Submit</button>
-
-                    </form>
-                    <br>
-                    <div id="OR">
-
-
-                        <p>OR</p>
-                    </div>
-                    <br>
-                    <form action="/auth/google" method="get">
-                        <button class="google-btn">
-                            <img src="/images/google_logo.svg" class="google-icon">
-                            Authenticate with Google
-                        </button>
-                    </form>
-                    <br>
-                    <p class="login-btn">New here? <a href="/register">Register</a></p>
-                </div>
+        <form action="/user-login" method="post">
+            <div class="input-group">
+                <label>Email</label>
+                <input type="email" placeholder="you@example.com" name="email" required />
             </div>
-        </div>
+
+            <div class="input-group">
+                <label>Password</label>
+                <input type="password" placeholder="••••••••" name="password" required />
+            </div>
+
+            <p class="forgot-link"><a href="/forgot-password">Forgot password?</a></p>
+
+            <button type="submit" class="submit-btn">Sign In</button>
+        </form>
+
+        <div class="divider"><span>or</span></div>
+
+        <form action="/auth/google" method="get">
+            <button type="submit" class="google-btn">
+                <img src="/images/google_logo.svg" alt="Google">
+                Continue with Google
+            </button>
+        </form>
+
+        <p class="register-link">New here? <a href="/register">Create an account</a></p>
     </div>
+
 </body>
 
 </html>
