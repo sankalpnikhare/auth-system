@@ -11,7 +11,7 @@ const cors = require('cors');
 
 const mongodbConnect = require('./db/db.js');
 
-const check_email = require('./auth/check_email.js');
+
 const create_user = require('./auth/create_user.js');
 
 const auth = require('./auth/auth.js');
@@ -21,6 +21,7 @@ const check_credentials = require('./auth/check_credentials.js');
 const checkotp = require('./auth/checkotp.js');
 const sendMail = require('./auth/sendMail.js');
 const hashedpassword = require('./utils/encryption.js');
+const check_email = require('./auth/check_email.js');
 
 const app = express();
 
@@ -154,7 +155,10 @@ app.post('/user-login', async (req, res) => {
 
 
 
-
+    email_check = await check_email(email)
+    if(!email_check){
+        return res.send("Email Not found")
+    }
 
 
     const user = await auth(email, password);
