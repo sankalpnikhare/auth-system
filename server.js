@@ -134,14 +134,20 @@ app.post('/user-login', async (req, res) => {
 
     const { email, password } = req.body;
 
+    
+    if(req.session.limit === undefined){
+        req.session.limit = 0 ;
+    }
     const user = await auth(email, password);
      
 
     if (!user) {
+        req.session.limit++ ;  
         
-        // return res.send("Email or Password is incorrect");
-        return res.send(req.session.limit);
+        return res.send("Email or Password is incorrect");
+        // return res.send(req.session.limit);
     }
+    req.session.limit = 0 ;
 
     const payload = {
         name: user.name,
