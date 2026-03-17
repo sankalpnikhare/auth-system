@@ -138,10 +138,25 @@ app.post('/user-login', async (req, res) => {
     if(req.session.limit === undefined){
         req.session.limit = 0 ;
     }
-
-    if(req.session.limit >= 5 ){
-            return res.send("Your access is blocked")
+    
+    if(req.session.limit >= 5){
+        if(!req.session.blockTime){
+            req.session.blockTime=  Date.now();
         }
+        const diff = Date.now() - req.session.blockTime ; 
+        if(diff < 10*60*1000){
+            return res.send("Try again after some tomtime")
+        }else{
+            req.session.limit = 0 ; 
+            req.session.blockTime = null ; 
+        }
+    }
+
+
+
+
+
+
     const user = await auth(email, password);
      
 
@@ -152,7 +167,7 @@ app.post('/user-login', async (req, res) => {
         return res.send("Email or Password is incorrect");
         // return res.send(req.session.limit);
     }
-    req.session.limit = 0 ;
+    // req.session.limit = 0 ;
 
     const payload = {
         name: user.name,
