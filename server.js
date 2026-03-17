@@ -145,7 +145,7 @@ app.post('/user-login', async (req, res) => {
         }
         const diff = Date.now() - req.session.blockTime ; 
         if(diff < 10*60*1000){
-            return res.send("Try again after some tomtime")
+            return res.send("Try again after some 10 Minutes")
         }else{
             req.session.limit = 0 ; 
             req.session.blockTime = null ; 
