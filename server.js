@@ -34,6 +34,7 @@ app.set('trust proxy', 1);
 app.use(cors());
 app.use(cookieParser());
 let otp;
+// let limit = 0 ;
 
 
 app.use(express.urlencoded({ extended: true }));
@@ -93,7 +94,7 @@ app.post('/check-otp', async (req, res) => {
 
 })
 
-app.post('/create-user', async (req, res) => {
+app.post('/users', async (req, res) => {
 
 
     const code = req.body.code;
@@ -134,9 +135,12 @@ app.post('/user-login', async (req, res) => {
     const { email, password } = req.body;
 
     const user = await auth(email, password);
+     
 
     if (!user) {
-        return res.send("Email or Password is incorrect");
+        
+        // return res.send("Email or Password is incorrect");
+        return res.send(req.session.limit);
     }
 
     const payload = {
