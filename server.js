@@ -138,11 +138,16 @@ app.post('/user-login', async (req, res) => {
     if(req.session.limit === undefined){
         req.session.limit = 0 ;
     }
+
+    if(req.session.limit >= 5 ){
+            return res.send("Your access is blocked")
+        }
     const user = await auth(email, password);
      
 
     if (!user) {
         req.session.limit++ ;  
+        
         
         return res.send("Email or Password is incorrect");
         // return res.send(req.session.limit);
