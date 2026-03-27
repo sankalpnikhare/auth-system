@@ -9,23 +9,23 @@ const jwt = require('jsonwebtoken');
 const cookieParser = require('cookie-parser');
 const cors = require('cors');
 
-const mongodbConnect = require('./db/db.js');
+const mongodbConnect = require('../db/db.js');
 
 
-const create_user = require('./auth/create_user.js');
+const create_user = require('../auth/create_user.js');
 
-const auth = require('./auth/auth.js');
+const auth = require('../auth/auth.js');
 
-const authOrToken = require('./auth/authortoken.js');
-const check_credentials = require('./auth/check_credentials.js');
-const checkotp = require('./auth/checkotp.js');
-const sendMail = require('./auth/sendMail.js');
+const authOrToken = require('../auth/authortoken.js');
+const check_credentials = require('../auth/check_credentials.js');
+const checkotp = require('../auth/checkotp.js');
+const sendMail = require('../auth/sendMail.js');
 const hashedpassword = require('./utils/encryption.js');
-const check_email = require('./auth/check_email.js');
+const check_email = require('../auth/check_email.js');
 
 const app = express();
 
-require('./auth/google_auth.js');
+require('../auth/google_auth.js');
 
 mongodbConnect();
 

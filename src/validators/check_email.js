@@ -1,6 +1,6 @@
 const express = require('express');
 const mongoose = require('mongoose');
-const usermodel = require('../db/model/usermodel');
+const usermodel = require('../../db/model/usermodel');
 
 
 async function check_email(Email){

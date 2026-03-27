@@ -1,4 +1,4 @@
-const usermodel = require('../db/model/usermodel');
+const usermodel = require('../../db/model/usermodel');
 const bcrypt = require('bcrypt');
 
 async function auth(Email, Password) {
