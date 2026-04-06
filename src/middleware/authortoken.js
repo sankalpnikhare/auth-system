@@ -4,7 +4,7 @@ const jwt = require('jsonwebtoken');
 function authOrToken(req, res, next) {
 
     if (req.isAuthenticated && req.isAuthenticated()) {
-        return next(); // Passport session login
+        return next(); 
     }
 
     const token = req.cookies.token;
@@ -12,7 +12,7 @@ function authOrToken(req, res, next) {
         try {
             const data = jwt.verify(token, process.env.JWT_SECRET_KEY);
             req.user = data;
-            return next(); // JWT login
+            return next(); 
         } catch (err) {
             return res.send("Invalid Token");
         }
